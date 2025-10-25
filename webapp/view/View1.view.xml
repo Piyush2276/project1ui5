@@ -1,0 +1,500 @@
+<mvc:View controllerName="project1ui5.controller.View1"
+
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form"
+	xmlns:sf="sap.f"
+	xmlns:core="sap.ui.core"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdct="sap.ui.mdc.table"
+	xmlns:vm="sap.ui.fl.variants"
+	xmlns:upload="sap.m.upload"
+ 	xmlns:plugins="sap.m.upload.plugins"
+	xmlns:Table1="sap.ui.mdc.table.Table"
+	xmlns:mdcat="sap.ui.mdc.actiontoolbar"
+    xmlns="sap.m">
+    
+    
+    <Page id="page" title="{i18n>title}">
+    
+    <Label text="Label A (required)" labelFor="input-a" />
+		<Input id="input-a" required="true" />
+    
+	<HBox class="mySeparator" />
+
+	<VBox 
+		class="sapUiMediumMarginTop"
+		
+		alignItems="Center" >
+		<Label text="This is link with icon"/>
+		<Link
+				text="Show more information"
+				endIcon="sap-icon://inspect"
+				press="handleLinkPress" />
+	</VBox>
+   
+	<HBox class="mySeparator" />
+
+    <VBox class="sapUiMediumMarginTop">
+		<Label text="Default RadioButton use" labelFor="GroupA" />
+		<RadioButtonGroup id="GroupA" select="onSelectRadio">
+			<RadioButton text="Option 1" selected="true" />
+			<RadioButton text="Option 2" />
+			<RadioButton text="Option 3" />
+			<RadioButton text="Option 4" />
+			<RadioButton text="Option 5" />
+		</RadioButtonGroup>
+	</VBox>
+	
+	<HBox class="mySeparator" />
+    <l:VerticalLayout class="sapUiContentPadding" width="100%">
+    <Text text="RangeSlider with text fields" class="sapUiSmallMarginBottom" />
+		<RangeSlider showAdvancedTooltip="true" range="{/RS1}" min="0" max="100" width="80%" class="sapUiMediumMarginBottom"
+		liveChange=".onRangeChange"  />
+    </l:VerticalLayout>
+
+    <HBox class="mySeparator" />
+
+    <VBox class="sapUiSmallMargin"
+	width="400px">
+		<Button id="button" text="Open Menu" press="onPress" ariaHasPopup="Menu"/>
+	</VBox>
+	<HBox class="mySeparator" />
+	<VBox class="sapUiSmallMargin">
+		<Button id="button1" text="Open Menu" press="onPressbypiyush" ariaHasPopup="Menu"/>
+	</VBox>
+
+	<HBox class="mySeparator" />
+
+    <Label text = "Regular mode button"/>
+		<MenuButton text="File">
+			<menu>
+				<Menu itemSelected="onMenuAction">
+					<MenuItem text="Edit" icon="sap-icon://edit" />
+					<MenuItem text="Save" icon="sap-icon://save" />
+					<MenuItem text="Open" icon="sap-icon://open-folder" />
+				</Menu>
+			</menu>
+		</MenuButton>
+
+	<HBox class="mySeparator" />
+
+        <tnt:NavigationList
+		id="navigationList"
+		width="320px"
+		itemSelect=".onItemSelect">
+            <tnt:NavigationListItem text="Item 1" key="rootItem1" icon="sap-icon://employee">
+			    <tnt:NavigationListItem text="Sub Item 1" />
+			    <tnt:NavigationListItem text="Sub Item 2" />
+			    <tnt:NavigationListItem text="Sub Item 3" id="subItemThree" key="subItem3" />
+			    <tnt:NavigationListItem text="Sub Item 4" />
+			    
+		    </tnt:NavigationListItem>
+        </tnt:NavigationList>
+    
+	<HBox class="mySeparator" />
+
+    <VBox renderType="Bare" alignItems="Start" height="100%">
+		<Button
+			text="Toggle Collapse/Expand"
+			icon="sap-icon://menu2"
+			press=".onCollapseExpandPress" />
+		<Button
+			text="Show/Hide &quot;Walked&quot;"
+			icon="sap-icon://menu2"
+			press=".onHideShowWalkedPress" />
+
+		<tnt:SideNavigation id="sideNavigation" selectedKey="walked" expanded="false">
+			<tnt:NavigationList>
+				<tnt:NavigationListItem text="Home" icon="sap-icon://home" />
+				<tnt:NavigationListGroup text="New">
+					<tnt:NavigationListItem text="People" icon="sap-icon://people-connected" />
+					<tnt:NavigationListItem text="Building" icon="sap-icon://building" >
+						<tnt:NavigationListItem text="Office 01" />
+						<tnt:NavigationListItem text="Office 02" />
+					</tnt:NavigationListItem>
+					<tnt:NavigationListItem text="Mileage" icon="sap-icon://mileage" >
+						<tnt:NavigationListItem text="Driven" />
+						<tnt:NavigationListItem text="Walked" id="walked" />
+					</tnt:NavigationListItem>
+				</tnt:NavigationListGroup>
+				<tnt:NavigationListGroup text="Recently used">
+					<tnt:NavigationListItem text="Managing My Area" icon="sap-icon://kpi-managing-my-area" />
+					<tnt:NavigationListItem text="Flight" icon="sap-icon://flight" />
+					<tnt:NavigationListItem text="Map" icon="sap-icon://map-2" />
+				</tnt:NavigationListGroup>
+				<tnt:NavigationListGroup text="Restricted" enabled="false">
+					<tnt:NavigationListItem text="Running" icon="sap-icon://physical-activity" />
+					<tnt:NavigationListItem text="Scissors" icon="sap-icon://scissors" />
+				</tnt:NavigationListGroup>
+				<tnt:NavigationListItem text="Transport" icon="sap-icon://passenger-train" />
+			</tnt:NavigationList>
+			<tnt:fixedItem>
+				<tnt:NavigationList>
+					<tnt:NavigationListItem text="Bar Chart" icon="sap-icon://bar-chart" />
+					<tnt:NavigationListItem selectable="false" href="https://sap.com" target="_blank" text="External Link" icon="sap-icon://attachment" />
+					<tnt:NavigationListItem selectable="false" href="https://sap.com" target="_top" text="External Link _top" icon="sap-icon://attachment" />
+					<tnt:NavigationListItem text="Compare" icon="sap-icon://compare" />
+				</tnt:NavigationList>
+			</tnt:fixedItem>
+		</tnt:SideNavigation>
+	</VBox>
+
+	<HBox class="mySeparator" />
+
+    <VBox
+		alignItems="Center"
+    	justifyContent="Center"
+		class="sapUiLargeMarginTop">
+		<u:Calendar
+				id="calendar"
+				select="handleCalendarSelect" />
+		<Button
+				press="handleSelectToday"
+				text="Select Today" />
+		<l:HorizontalLayout>
+			<Label
+					text="Selected Date (yyyy-mm-dd):"
+					class="labelMarginLeft" />
+			<Text
+					id="selectedDate"
+					text="No Date Selected"
+					class="labelMarginLeft"/>
+		</l:HorizontalLayout>
+	</VBox>
+
+	<HBox class="mySeparator" />
+
+    <f:SimpleForm
+		editable="true"
+		layout="ResponsiveGridLayout"
+		labelSpanL="4"
+		labelSpanM="4">
+		<f:content>
+			<Label text="Clearing with Customer" />
+			<CheckBox text="Option" />
+			<CheckBox text="Option 2" selected="true">
+				<layoutData>
+					<l:GridData linebreak="true"
+						indentL="4"
+						indentM="4" />
+				</layoutData>
+			</CheckBox>
+			<CheckBox id="focusMe" text="Option 3">
+				<layoutData>
+					<l:GridData linebreak="true"
+						indentL="4"
+						indentM="4" />
+				</layoutData>
+			</CheckBox>
+			<CheckBox text="Checkbox with wrapping='true' and long text placed in a form" wrapping="true" width="200px">
+				<layoutData>
+					<l:GridData linebreak="true"
+						indentL="4"
+						indentM="4" />
+				</layoutData>
+			</CheckBox>
+		</f:content>
+	</f:SimpleForm>
+
+	<HBox class="mySeparator" />
+	<!-- file uploader -->
+    <VBox 
+		width="100%"
+		alignItems="Center"
+		justifyContent="Center"
+    	class="sapUiSmallMargin">
+		<u:FileUploader
+			id="fileUploader"
+			name="myFileUpload"
+			uploadUrl="upload/"
+			tooltip="Upload your file to the local server"
+			uploadComplete="handleUploadComplete"/>
+		<Button
+			text="Upload File"
+			press="handleUploadPress"/>
+	</VBox>
+
+	<HBox class="mySeparator" />
+	<HBox class="mySeparator" />
+
+	<VBox class="sapUiContentPadding">
+
+            <!-- Static Table -->
+            <Text text="Static Table" class="sapUiSmallMarginBottom"/>
+            <Table id="staticTable" inset="false" width="100%">
+                <columns>
+                    <Column>
+                        <Text text="Name"/>
+                    </Column>
+                    <Column>
+                        <Text text="Age"/>
+                    </Column>
+                    <Column>
+                        <Text text="City"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="John"/>
+                            <Text text="28"/>
+                            <Text text="New York"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="Alice"/>
+                            <Text text="24"/>
+                            <Text text="London"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            <VBox class="sapUiSmallMarginTop"/>
+
+            <!-- Dynamic Table -->
+            <Text text="Dynamic Table (JSON Model)" class="sapUiSmallMarginBottom"/>
+            <Table id="dynamicTable" inset="false" width="100%" items="{/employees}">
+                <columns>
+                    <Column>
+                        <Text text="Name"/>
+                    </Column>
+                    <Column>
+                        <Text text="Age"/>
+                    </Column>
+                    <Column>
+                        <Text text="City"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{name}"/>
+                            <Text text="{age}"/>
+                            <Text text="{city}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+        </VBox>
+
+	<HBox class="mySeparator" />
+	<!-- upload set with table plugins -->
+	<l:VerticalLayout width="100%">
+			<Table
+				id="table-uploadSet"
+				sticky="ColumnHeaders,HeaderToolbar"
+				width="auto"
+				mode="MultiSelect"
+				fixedLayout="false"
+				inset="true"
+				autoPopinMode="true"
+				hiddenInPopin="None"
+				items="{path: 'documents>/items', templateShareable: false}"
+				selectionChange="onSelectionChange">
+
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title
+							text="Documents ({= ${documents>/items}.length})"
+							level="H2"
+						/>
+						<ToolbarSpacer />
+
+						<SearchField
+							width="20%"
+							liveChange="onSearch"
+						>
+							<layoutData>
+								<OverflowToolbarLayoutData
+									priority="NeverOverflow"
+								/>
+							</layoutData>
+						</SearchField>
+						<ToolbarSeparator />
+
+						<!-- Use the UploadButtonPlaceholder to add the UploadButton to the toolbar -->
+						<upload:ActionsPlaceholder id="uploadButton" placeholderFor="UploadButtonPlaceholder" />
+
+						<Button
+							id="downloadSelectedButton"
+							text="Download"
+							enabled="false"
+							press="onDownloadFiles"
+						/>
+						<MenuButton text="Add">
+							<menu>
+								<Menu>
+									<MenuItem
+										text="URL"
+										press="openAddOrEditDialog"
+									/>
+								</Menu>
+							</menu>
+							<layoutData>
+								<OverflowToolbarLayoutData
+									priority="AlwaysOverflow"
+								/>
+							</layoutData>
+						</MenuButton>
+						<Button
+							id="removeDocumentButton"
+							text="Remove"
+							press="onRemoveButtonPress"
+							enabled="false"
+						>
+							<layoutData>
+								<OverflowToolbarLayoutData
+									priority="AlwaysOverflow"
+								/>
+							</layoutData>
+						</Button>
+						<Button
+							id="renameButton"
+							enabled="false"
+							press="onRenameDocument"
+							text="Rename"
+						>
+							<layoutData>
+								<OverflowToolbarLayoutData
+									priority="AlwaysOverflow"
+								/>
+							</layoutData>
+						</Button>
+						<Button
+							id="editUrlButton"
+							text="Edit URL"
+							enabled="false"
+							press="onEditUrl"
+						>
+							<layoutData>
+								<OverflowToolbarLayoutData
+									priority="AlwaysOverflow"
+								/>
+							</layoutData>
+						</Button>
+					</OverflowToolbar>
+				</headerToolbar>
+
+				<dependents>
+					<plugins.UploadSetwithTable
+						uploadUrl="/uploadFiles"
+						multiple="true"
+						beforeUploadStarts="onBeforeUploadStarts"
+						itemRenamed="onDocumentRenamedSuccess"
+						uploadCompleted="onUploadCompleted"
+						onActivated="onPluginActivated"
+						cloudFilePickerEnabled="true"
+						actions="uploadButton"
+						>
+						<rowConfiguration>
+							<upload.UploadItemConfiguration
+								fileNamePath="fileName"
+								mediaTypePath="mediaType"
+								urlPath="url"
+								previewablePath="previewable"
+								fileSizePath="fileSize"
+								isTrustedSourcePath="trustedSource"
+							/>
+						</rowConfiguration>
+					</plugins.UploadSetwithTable>
+				</dependents>
+
+				<columns>
+					<Column id="fileName" importance="High">
+						<header>
+							<Label text="File Name" />
+						</header>
+					</Column>
+					<Column id="id">
+						<header>
+							<Label text="ID" />
+						</header>
+					</Column>
+					<Column id="revision">
+						<header>
+							<Label text="Revision" />
+						</header>
+					</Column>
+					<Column id="status">
+						<header>
+							<Label text="Status" />
+						</header>
+					</Column>
+					<Column id="fileSize">
+						<header>
+							<Label text="File Size" />
+						</header>
+					</Column>
+					<Column id="lastModified">
+						<header>
+							<Label text="Last Modified" />
+						</header>
+					</Column>
+					<Column id="actionButton" importance="High" />
+				</columns>
+	
+	
+				<items>
+					<ColumnListItem
+						highlight="{= ${documents>uploadState} === 'Complete' ? 'Indication05' : null }"
+					>
+	
+					<!-- Cells with cell template defining content for each column (cells and columns work with 1:1 mapping) -->
+						<cells>
+							<HBox>
+								<Image
+									src="{documents>imageUrl}"
+									class="sapMUSTItemImage sapMUSTItemIcon"
+									visible="{= ${documents>imageUrl} !== undefined}"
+								/>
+								<core:Icon
+									src="{parts: ['documents>mediaType', 'documents>fileName'], formatter: '.getIconSrc' }"
+									visible="{= ${documents>imageUrl} === undefined || ${documents>imageUrl} === '' }"
+									class="sapMUSTItemImage sapMUSTItemIcon"
+								/>
+								<VBox
+									class="sapUiTinyMargin sapUiSmallMarginBegin"
+								>
+									<Link
+										text="{documents>fileName}"
+										press="openPreview"
+										class="sapUiTinyMarginBottom"
+									/>
+									<Text text="{documents>documentType}" />
+								</VBox>
+							</HBox>
+							<Text text="{documents>id}" />
+							<Link text="{documents>revision}" />
+							<Text text="{documents>status}" />
+							<Text
+								text="{parts: ['documents>fileSize'], formatter: '.getFileSizeWithUnits'}"
+							/>
+							<VBox>
+								<Text text="{documents>lastModifiedBy}" />
+								<Text
+									class="sapUiTinyMarginTop"
+									text="{documents>lastmodified}"
+								/>
+							</VBox>
+							<Button
+								class="sapUiTinyMarginBegin"
+								type="Transparent"
+								icon="sap-icon://decline"
+								press="onRemoveHandler"
+							/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+	</l:VerticalLayout>
+
+	 
+
+    </Page>
+</mvc:View>

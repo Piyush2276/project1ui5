@@ -1,0 +1,7 @@
+/* Enter your custom styles here */
+.mySeparator {
+  width: 100%;
+  border-bottom: 1px solid #000; /* black line */
+  margin: 0.5rem 0;
+  background-color: red;
+}
